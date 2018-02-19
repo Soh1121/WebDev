@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ミニチャレンジ</title>
+        <style type="text/css">
+            #circleRed {
+                background-color: red;
+            }
+            
+            #circleYellow {
+                background-color: yellow;
+            }
+
+            
+            #circleBlue {
+                background-color: blue;
+            }
+
+            .circle {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                margin: 10px 30px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="circleRed" class="circle"></div>
+        <div id="circleBlue" class="circle"></div>
+        <div id="circleYellow" class="circle"></div>
+        <!--<button id="deleteRed">赤の円を消す</button>-->
+        <!--<button id="deleteBlue">青の円を消す</button>-->
+        <!--<button id="deleteYellow">黄の円を消す</button>-->
+        
+        <script>
+            //document.getElementById("deleteRed").onclick = function(){
+            document.getElementById("circleRed").onclick = function(){
+                document.getElementById("circleRed").style.display = "none";
+            }
+            //document.getElementById("deleteBlue").onclick = function(){
+            document.getElementById("circleBlue").onclick = function(){
+                document.getElementById("circleBlue").style.display = "none";
+            }
+            //document.getElementById("deleteYellow").onclick = function(){
+            document.getElementById("circleYellow").onclick = function(){
+                document.getElementById("circleYellow").style.display = "none";
+            }
+        </script>
+    </body>
+</html>
