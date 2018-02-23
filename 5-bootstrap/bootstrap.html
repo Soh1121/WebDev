@@ -6,59 +6,75 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"><!-- IEのバージョン -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><!-- crossorigin:位置情報などを読み込まない -->
-
+    
+    <style>
+        body {
+            position: relative;
+            padding: 70px;
+        }
+    </style>
     <title>Hello, world!</title>
   </head>
-  <body>
-      <div class="container">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-name="Rob">
-          Email Rob!
-        </button>
-          
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-name="Kirsten">
-          Email Kirsten!
-        </button>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-name="Tommy">
-          Email Tommy!
-        </button>
+    <body data-spy="scroll" data-target="#navbar-example">
+        <nav class="navbar fixed-top navbar-light bg-light" id="navbar-example">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="#one">One</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#two">Two</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#three">Three</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#four">Four</a>
+                </li>
+            </ul>
+        </nav>
 
+             <h2 id="one">Section 1</h2>
+     
+     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">メールを送る</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ここからメールを送りましょう！
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
+Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
+
+Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
+
+<h2 id="two">Section 2</h2>
+     
+     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
+
+Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
+
+Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
+     
+     <h2 id="three">Section 3</h2>
+     
+     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
+
+Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
+
+Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
+     
+     <h2 id="four">Section 4</h2>
+     
+     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
+
+Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
+
+Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
+
+        
+        
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><!-- bootstrap3と4の互換性 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       
-        <script>
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var recipient = button.data('name');
-            var modal = $(this);
-            modal.find('.modal-title').text('新しいメッセージを' + recipient + "に送る！");
-            modal.find('.modal-body').text(recipient + 'に送るメッセージを入力してから送信ボタンをクリックしてください！');
-        })
+      <script>
+          $('body').scrollspy({ target: '#navbar-example' })
       </script>
-  </body>
+
+    </body>
 </html>
