@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><!-- crossorigin:位置情報などを読み込まない -->
     
     <style>
-        body {
-            position: relative;
-            padding: 70px;
+        .jumbotron {
+            background-image: url("./background.jpg");
         }
+        
     </style>
-    <title>Hello, world!</title>
+    <title></title>
   </head>
 
     <body data-spy="scroll" data-target="#navbar-example">
-        <nav class="navbar fixed-top navbar-light bg-light" id="navbar-example">
+        <!--<nav class="navbar fixed-top navbar-light bg-light" id="navbar-example">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item active">
                     <a class="nav-link active" href="#one">One</a>
@@ -32,17 +32,57 @@
                     <a class="nav-link" href="#four">Four</a>
                 </li>
             </ul>
+        </nav>-->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand" href="#">MyApp</a>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Download The App</a>
+                  </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                  <input class="form-control mr-sm-2" type="password" id="inputPassword" placeholder="Password">
+                  <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+              </form>
+            </div>
         </nav>
-
-             <h2 id="one">Section 1</h2>
-     
-     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
-
-Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
-
-Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
-
-<h2 id="two">Section 2</h2>
+        
+        <div class="jumbotron">
+            <h1 class="display-3">My Awesome App!</h1>
+            <p class="lead">This is why YOU should download this fantastic app!</p>
+            <hr class="my-4">
+            <p>Want to know more? Join our mailing list!</p>
+            <form class="form-inline">
+                <div class="container">
+                    <label class="sr-only" for="email">Email address</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input class="form-control" type="text" id="email" placeholder="Your email">
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Sign up</button>
+            </form>
+        </div>
+        
+        <h2 id="one">Section 1</h2>
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
+            
+        Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
+            
+        Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
+        
+        <h2 id="two">Section 2</h2>
      
      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
 
