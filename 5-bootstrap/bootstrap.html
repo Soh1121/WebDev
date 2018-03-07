@@ -10,6 +10,42 @@
     <style>
         .jumbotron {
             background-image: url("./background.jpg");
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .input-group {
+            padding: 0px 10px;
+        }
+        
+        .form-group {
+            margin: auto;
+        }
+        
+        #email {
+            width: 300px;
+        }
+        
+        #appSummary {
+            text-align: center;
+            margin-top:50px;
+            margin-bottom: 50px;
+        }
+        
+        #footer {
+            background-color: aqua;
+            margin-top: 50px;
+            padding-top: 150px;
+            padding-bottom: 150px;
+            text-align: center;
+        }
+        
+        #appStoreIcon {
+            width: 200px;
+        }
+        
+        body {
+
         }
         
     </style>
@@ -33,6 +69,7 @@
                 </li>
             </ul>
         </nav>-->
+        <!-- ナビゲーションバー -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,80 +78,90 @@
               <a class="navbar-brand" href="#">MyApp</a>
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
-                      <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="#jumbotron">Home<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">About</a>
+                      <a class="nav-link" href="#about">About</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Download The App</a>
+                      <a class="nav-link" href="#footer">Download The App</a>
                   </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                  <input class="form-control mr-sm-2" type="email" id="inputEmail1" aria-describedby="emailHelp" placeholder="Email">
                   <input class="form-control mr-sm-2" type="password" id="inputPassword" placeholder="Password">
                   <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
               </form>
             </div>
         </nav>
         
-        <div class="jumbotron">
+        <!-- jumbotron -->
+        <div class="jumbotron" id="jumbotron">
             <h1 class="display-3">My Awesome App!</h1>
             <p class="lead">This is why YOU should download this fantastic app!</p>
             <hr class="my-4">
             <p>Want to know more? Join our mailing list!</p>
+            <!-- フォーム部分 -->
             <form class="form-inline">
-                <div class="container">
-                    <label class="sr-only" for="email">Email address</label>
-                    <div class="input-group">
-                        <div class="input-group-text">@</div>
-                        <input class="form-control" type="text" id="email" placeholder="Your email">
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        <input type="email" class="form-control" id="email" placeholder="Your email">
                     </div>
+                    <button type="submit" class="btn btn-primary mb-2">Sign up</button>
                 </div>
-                <button class="btn btn-primary" type="submit">Sign up</button>
             </form>
         </div>
         
-        <h2 id="one">Section 1</h2>
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
-            
-        Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
-            
-        Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
+        <!-- 本文 -->
+        <div class="container" id="appSummary">
+            <h1>Why This App Is Awesome</h1>
+            <p class="lead">Summary, once again, of your app's awesomeness</p>
+        </div>
         
-        <h2 id="two">Section 2</h2>
-     
-     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
-
-Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
-
-Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
-     
-     <h2 id="three">Section 3</h2>
-     
-     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
-
-Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
-
-Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
-     
-     <h2 id="four">Section 4</h2>
-     
-     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum risus sed velit pellentesque placerat. Sed facilisis, dolor in imperdiet dapibus, tortor leo euismod ex, pharetra ultrices mi mauris ac diam. In hac habitasse platea dictumst. Mauris non auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt orci vel posuere consectetur. Aenean tristique, dui ac facilisis accumsan, eros risus hendrerit felis, sit amet eleifend velit neque ac felis. Aenean mauris dui, pretium at volutpat vel, semper vel est. Phasellus et tellus eros. Nulla in ullamcorper libero, eu fermentum eros. Phasellus congue diam in neque fringilla, eu aliquam ligula facilisis. Praesent at consequat nibh, ut commodo libero.
-
-Pellentesque ac cursus nibh. Etiam magna ex, ultricies et egestas id, scelerisque et nisi. Aliquam in mattis velit. Vivamus semper tempor fermentum. Donec lorem sapien, pulvinar a laoreet in, ultrices quis turpis. Sed ornare faucibus auctor. Sed est metus, feugiat cursus porta et, posuere non sem. Maecenas sollicitudin sed massa sed accumsan. Maecenas id nisl vitae odio dignissim feugiat in sit amet mi. Vestibulum rhoncus elementum nunc pharetra aliquet.
-
-Morbi commodo urna id nibh sollicitudin, et ultrices mi dapibus. Nunc gravida eros vel hendrerit elementum. Duis lobortis hendrerit eros nec tempus. Sed euismod euismod lectus, nec viverra ipsum tempor tempor. Suspendisse pulvinar convallis facilisis. Aenean dapibus tortor id sem semper, sed tempus nisl tempus. Ut varius enim id sodales fringilla. Maecenas varius semper rhoncus. Cras sed interdum ex.</div>
-
+        <!-- カード -->
+        <div class="container" id="about">
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="./fatherandson.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./fatherandson.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./fatherandson.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         
+        <!-- footer -->
+        <div id="footer">
+            <h2>Download the app!</h2>
+            <p class="lead">Really, why should I download this app??</p>
+            <p><a href="#"><img id="appStoreIcon" src="./App-Store-Icon.png"></a></p>
+        </div>
         
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><!-- bootstrap3と4の互換性 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><!-- bootstrap3と4の互換性 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       
-      <script>
-          $('body').scrollspy({ target: '#navbar-example' })
-      </script>
+        <script>
+            $('body').scrollspy({ target: '#navbar-example' })
+        </script>
 
     </body>
 </html>
