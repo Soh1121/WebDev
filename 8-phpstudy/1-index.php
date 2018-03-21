@@ -16,4 +16,14 @@ $calc = $myNumber * 31 / 97 + 4;
 
 echo "<p>計算結果：${calc}";
 
+// ブーリアン true, false
+
+$myBool = true;
+
+echo "<p>現在の状態は、${myBool}です。</p>";
+
+$myBool = false;
+
+echo"<p>現在の状態は、${myBool}です。</p>";
+
 ?>
