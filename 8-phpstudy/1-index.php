@@ -2,7 +2,14 @@
 
 $i = 0;
 while($i < 10){
-    echo $i;
+    echo $i."<br>";
+    $i++;
+}
+
+$i = 0;
+$family = array("Rob", "Kirsten", "Tommy", "Ralphie");
+while($i < sizeof($family)){
+    echo $family[$i]."Percival, ";
     $i++;
 }
 
