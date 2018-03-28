@@ -1,5 +1,12 @@
 <?php
 
+$i = 0;
+while($i < 10){
+    echo $i;
+    $i++;
+}
+
+/*
 for($i = 2; $i < 30; $i++){
     echo $i,",";
 }
@@ -31,7 +38,7 @@ foreach($family as $key => $value){
     $family[$key] = $value." Percival";
     echo $family[$key].", ";
 }
-
+*/
 
 
 ?>
