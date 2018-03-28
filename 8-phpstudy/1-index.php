@@ -24,4 +24,14 @@ for($i = 0; $i < sizeof($family); $i++){
     }
 }
 
+echo "<br><br>";
+
+foreach($family as $key => $value){
+    // echo $key.": ".$value.", ";
+    $family[$key] = $value." Percival";
+    echo $family[$key].", ";
+}
+
+
+
 ?>
