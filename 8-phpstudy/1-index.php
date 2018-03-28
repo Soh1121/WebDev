@@ -1,6 +1,6 @@
 <?php
 
-for($i = 2; $i < 30; $i++){
+for($i = 10; $i > 0; $i--){
     echo $i,",";
 }
 echo $i;
