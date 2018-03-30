@@ -8,8 +8,17 @@
     }
 
     $query = "SELECT * FROM users";
-    if(mysqli_query($link, $query)){
-        echo "クエリの発行に成功しました。";
+    if($result = mysqli_query($link, $query)){
+    //    echo "クエリの発行に成功しました。<br>";
     }
+    $row = mysqli_fetch_array($result);
+    // print_r($row);
+    // 連想配列型：できればこっち（わかりやすいから）
+    echo "<p>あなたのメールアドレスは".$row["email"]."、パスワードは".$row["password"]."です。</p>";
+    
+    // 配列型
+    echo "<p>あなたのメールアドレスは".$row[1]."、パスワードは".$row[2]."です。</p>";
+
+    echo "<p>あなたのIDは".$row["id"]."です。</p>";
 
 ?>
