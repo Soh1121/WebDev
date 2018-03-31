@@ -32,8 +32,8 @@
     
             /*
             1. Eメールとパスワードの入力フォーム、「登録する」ボタンを設置する ：　済み
-            2. データが入力されているかどうかチェックする
-            3. メールアドレスが既に使用されていないかチェックする
+            2. データが入力されているかどうかチェックする　：　済み
+            3. メールアドレスが既に使用されていないかチェックする ：　済み
             4.メールアドレスが重複がなければユーザー登録（データベーステーブルに追加する）を実行する
             5.ユーザー登録に成功しました、というメッセージを表示する
             */
@@ -56,32 +56,35 @@
         </div>
         
         <?php
+            $link = mysqli_connect("localhost", "root", "root", "memberapp");
+            if(mysqli_connect_error()){
+                die("データベースへの接続に失敗しました。");
+            }
+        
             if(isset($_POST['submit']) && $_POST['submit'] === "登録"){
                 $email = $_POST['email'];
                 $password = $_POST['password'];
+                $inputCheck = 1;
                 if($email === ""){
                     echo "<p>Emailアドレスが入力されていません。</p>";
+                    $inputCheck = 0;
                 }
                 if($password === ""){
                     echo "<p>パスワードが入力されていません。</p>";
+                    $inputCheck = 0;
+                }
+                if($inputCheck === 1){
+                    $query = "SELECT * FROM users WHERE email='".mysqli_real_escape_string($link,$email)."'";
+                    if($result = mysqli_query($link,$query)){
+//                        echo "<p>クエリの発行に成功しました。</p>";
+                    }
+                    while($row = mysqli_fetch_array($result)){
+                        if($row){
+                            die("そのメールアドレスは既に登録されています。");
+                        }
+                    }
                 }
             }
-            /*
-            if(isset($_POST['email'])){
-                echo $email = $_POST['email'];
-            } else {
-                $email = "";
-            }
-            
-            if(isset($_POST['password'])){
-                echo $password = $_POST['password'];
-                echo "パスワードは入力されました。";
-            } else {
-                $password = "";
-            }
-            if($email == "" || $password == ""){
-                alert("Eailアドレスかパスワードが入力されていません。");
-            }*/
 
         ?>
         
