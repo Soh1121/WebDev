@@ -7,8 +7,13 @@
         die("データベースへの接続に失敗しました。");
     }
 
-    $query = "SELECT * FROM users WHERE `name` LIKE 'R%'";
-    if($result = mysqli_query($link, $query)){
+    $name = "Rob O'Grady";
+    $query = "SELECT * FROM users WHERE name = '".mysqli_real_escape_string($link,$name)."'";
+    
+    echo $query;
+    echo "<p>";
+        
+    if($result = mysqli_query($link,$query)){
     //    echo "クエリの発行に成功しました。<br>";
     }
     while($row = mysqli_fetch_array($result)){
