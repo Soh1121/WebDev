@@ -38,19 +38,28 @@
             5.ユーザー登録に成功しました、というメッセージを表示する
             */
         ?>
+        
         <div class="container">
             <!-- Content here -->
             <p></p>
-            <div class="form-group">
-                <label for="inputEmail">Emailアドレス</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Emailアドレスを入力してください">
-            </div>
-            <div class="form-group">
-                <label for=inputPassword>パスワード</label>
-                <input type="password" class="form-control" id="inputPassword">
-            </div>
-            <button type="submit" class="btn btn-primary">登録</button>
+            <form method="post">
+                <div class="form-group">
+                    <label for="inputEmail">Emailアドレス</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Emailアドレスを入力してください">
+                </div>
+                <div class="form-group">
+                    <label for=inputPassword>パスワード</label>
+                    <input type="password" class="form-control" id="inputPassword">
+                </div>
+                <button type="submit" class="btn btn-primary">登録</button>
+            </form>
         </div>
+        
+        <?php
+            $email = $_POST['inputEmail'];
+            echo $email;
+
+        ?>
         
     </body>
 </html>
