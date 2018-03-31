@@ -83,6 +83,10 @@
                             die("そのメールアドレスは既に登録されています。");
                         }
                     }
+                    $query = "INSERT INTO `users`(`email`,`password`) VALUE('".mysqli_real_escape_string($link,$email)."','".mysqli_real_escape_string($link,$password)."')";
+                    if($resule = mysqli_query($link,$query)){
+                        echo '<p>ユーザー登録に登録に成功しました。</p>';
+                    }
                 }
             }
 
