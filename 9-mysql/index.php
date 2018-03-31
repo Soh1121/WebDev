@@ -7,7 +7,7 @@
         die("データベースへの接続に失敗しました。");
     }
 
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users WHERE `email`='kirsten@gmail.com'";
     if($result = mysqli_query($link, $query)){
     //    echo "クエリの発行に成功しました。<br>";
     }
