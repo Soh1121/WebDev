@@ -7,7 +7,7 @@
         die("データベースへの接続に失敗しました。");
     }
 
-    $query = "SELECT * FROM users WHERE `email` LIKE '%@gmail.com'";
+    $query = "SELECT * FROM users WHERE `name` LIKE 'R%'";
     if($result = mysqli_query($link, $query)){
     //    echo "クエリの発行に成功しました。<br>";
     }
