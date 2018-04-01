@@ -1,4 +1,8 @@
 <?php
+
+    session_start();
+
+//    echo $_SESSION['username'];
     $link = mysqli_connect("localhost", "root", "root", "memberapp");
     // サーバー名、データベースユーザ名、パスワード
 
@@ -23,7 +27,9 @@
                 // 未使用の場合の処理を記述
                 $query = "INSERT INTO `users` (`email`,`password`) VALUES ('".mysqli_real_escape_string($link,$_POST['email'])."','".mysqli_real_escape_string($link,$_POST['password'])."')";
                 if(mysqli_query($link,$query)){
-                    echo "登録されました！";
+//                    echo "登録されました！";
+                    $_SESSION['email']=$_POST['email'];
+                    header("Location: session.php");
                 } else {
                     echo "登録に失敗しました。";
                 }
