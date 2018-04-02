@@ -1,15 +1,9 @@
 <?php
 
-// setcookie("customerId", "1234", time() + 60 * 60 * 24 );
-// setcookie("customerId", "", time() - 60 * 60 * 24);
-setcookie("customerId", "test", time() + 60 * 60 * 24);
+$salt = "dfdsfsfhg";
 
-echo $_COOKIE["customerId"];
+$row['id'] = 73;
+
+echo md5(md5($row['id'])."password");
 
 ?>
-
-<form method="post">
-    <input name="email" type="text" placeholder="Eメール">
-    <input name="password" type="password" placeholder="パスワード">
-    <input type="submit" value="登録する">
-</form>
