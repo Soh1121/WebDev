@@ -20,15 +20,27 @@
             <a class="navbar-brand" href="#">Diary Service</a>
             <form method="post" class="form-inline">
                 <div class="form-group row">
-                    <input type="email" class="form-control my-1 mx-sm-2" placeholder="Email">
-                    <input type="password" class="form-control my-1 mx-sm-2" placeholder="Password">
+                    <input type="email" class="form-control my-1 mx-sm-2" placeholder="メールアドレス">
+                    <input type="password" class="form-control my-1 mx-sm-2" placeholder="パスワード">
                     <button type="submit" class="btn btn-outline-light my-1 mx-sm-2">ログイン</button>
                 </div>
             </form>
         </nav>
         
-        <div class="container">
-            
+        <div class="jumbotron">
+            <h1 class="display-4">Diary Service</h1>
+            <p class="lead">ユーザー登録をして、日記を投稿するサイトを作ってみましょう。</p>
+            <p class="lead">各ユーザーは自分の投稿した日記だけを参照することができます。</p>
+            <p class="lead">ユーザーはメールアドレスとパスワードでサイトに登録をします。</p>
+            <hr class="my-4">
+            <p>ユーザー登録がまだの方はメールアドレスとパスワードを登録ください。</p>
+            <div class="text-center">
+                <form method="post" class="form-inline">
+                    <input type="email" class="form-control my-1 mx-sm-2" placeholder="メールアドレス">
+                    <input type="password" class="form-control my-1 mx-sm-2" placeholder="パスワード">
+                    <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2">登録</button>
+                </form>
+            </div>
         </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
