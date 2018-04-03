@@ -15,8 +15,8 @@
             <a class="navbar-brand" href="#">Diary Service</a>
             <form method="post" class="form-inline">
                 <div class="form-group row">
-                    <input type="email" class="form-control my-1 mx-sm-2" name="loginEmail" placeholder="メールアドレス">
-                    <input type="password" class="form-control my-1 mx-sm-2" name="loginPassword" placeholder="パスワード">
+                    <input type="email" class="form-control my-1 mx-sm-2" placeholder="メールアドレス">
+                    <input type="password" class="form-control my-1 mx-sm-2" placeholder="パスワード">
                     <button type="submit" class="btn btn-outline-light my-1 mx-sm-2" name="login">ログイン</button>
                 </div>
             </form>
@@ -39,6 +39,12 @@
         </div>
         
         <?php
+            // 新規登録をする関数
+            function newRegist_($link, $registerEmail, $registerPassword){
+                
+                
+                
+            }
             $link = mysqli_connect("localhost", "root", "root", "diaryapp");
             
             if(mysqli_connect_error()){
@@ -46,14 +52,14 @@
             }
         
 //            echo "<p>データベースへの接続に成功しました。</p>";
-            // 登録ボタンが押されたとき
+            // データベースにユーザー登録するところから(3018/04/03)
             if(isset($_POST['regist'])){
                 if(array_key_exists('registerEmail',$_POST) OR array_key_exists('registerPassword',$_POST)){
 //                    echo "<p>Keyは存在します。</p>";
                     if($_POST['registerEmail'] === ''){
-                        echo "<p>登録メールアドレスを入力してください。</p>";
+                        echo "<p>メールアドレスを入力してください。</p>";
                     } elseif($_POST['registerPassword'] === ''){
-                        echo "<p>登録パスワードを入力してください</p>";
+                        echo "<p>パスワードを入力してください</p>";
                     } else {
                         $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
                         $result = mysqli_query($link,$query);
@@ -73,28 +79,6 @@
                             echo "<p>登録に成功しました。</p>";
                         }
                     }
-                }
-            }
-        
-            // ログインボタンが押されたとき
-            if(isset($_POST['login'])){
-//                echo "<p>ログインボタンが押されました。</p>";
-                if(array_key_exists('loginEmail', $_POST) OR array_key_exists('loginPassword', $_POST)){
-                     if($_POST['loginEmail'] === ''){   // ログインメールアドレスが入力されていなかった場合
-                        echo "<p>ログインメールアドレスを入力してください。</p>";
-                     } elseif($_POST['loginPassword'] === ''){  // ログインパスワードが入力されていなかった場合
-                        echo "<p>ログインパスワードを入力してください</p>";
-                     } else {   // ログイン情報が正常に入力されていた場合
-                         $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['loginEmail'])."'";
-                         $result = mysqli_query($link,$query);
-                         if(mysqli_num_rows($result) === 0){    // メールアドレスが見つからなかった場合
-                             echo "<p>メールアドレスもしくはパスワードが誤っています。</p>";
-                         } else if(mysqli_num_rows($result) === 1){ // メールアドレスがひとつだけ見つかった場合
-                             echo "一致するメールアドレスが発見されました。</p>";
-                         } else {
-                             echo "<p>エラー</p>";
-                         }
-                     }
                 }
             }
         ?>
