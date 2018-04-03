@@ -9,11 +9,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         
         <title>Diary Service</title>
-        <style>
-            .inputForm {
-                margin: 0px 10px;
-            }
-        </style>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-primary">
@@ -22,7 +17,7 @@
                 <div class="form-group row">
                     <input type="email" class="form-control my-1 mx-sm-2" placeholder="メールアドレス">
                     <input type="password" class="form-control my-1 mx-sm-2" placeholder="パスワード">
-                    <button type="submit" class="btn btn-outline-light my-1 mx-sm-2">ログイン</button>
+                    <button type="submit" class="btn btn-outline-light my-1 mx-sm-2" name="login">ログイン</button>
                 </div>
             </form>
         </nav>
@@ -36,12 +31,61 @@
             <p>ユーザー登録がまだの方はメールアドレスとパスワードを登録ください。</p>
             <div class="text-center">
                 <form method="post" class="form-inline">
-                    <input type="email" class="form-control my-1 mx-sm-2" placeholder="メールアドレス">
-                    <input type="password" class="form-control my-1 mx-sm-2" placeholder="パスワード">
-                    <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2">登録</button>
+                    <input type="email" class="form-control my-1 mx-sm-2" name="registerEmail" placeholder="メールアドレス">
+                    <input type="password" class="form-control my-1 mx-sm-2" name="registerPassword" placeholder="パスワード">
+                    <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" name="regist">登録</button>
                 </form>
             </div>
         </div>
+        
+        <?php
+            // 新規登録をする関数
+            function newRegist_($link, $registerEmail, $registerPassword){
+                // usersテーブルにemailを登録
+                $query = "INSERT INTO `users` (`email`) VALUES('".mysqli_real_escape_string($link,$registerEmail)."')";
+                $result = mysqli_query($link,$query);
+                // 登録したemailのidを取得
+                $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$registerEmail)."'";
+                $result = mysqli_query($link,$query);
+                $row = mysqli_fetch_array($result);
+                // パスワードを暗号化して保存
+                $query = "UPDATE `users` SET password='".mysqli_real_escape_string($link,md5(md5($row['userid']).$registerPassword))."' WHERE email='".mysqli_real_escape_string($link,$registerEmail)."' LIMIT 1";
+                $result = mysqli_query($link, $query);
+                echo "<p>登録に成功しました。</p>";
+            }
+            $link = mysqli_connect("localhost", "root", "root", "diaryapp");
+            
+            if(mysqli_connect_error()){
+                die("データベースへの接続に失敗しました。");
+            }
+        
+//            echo "<p>データベースへの接続に成功しました。</p>";
+            // データベースにユーザー登録するところから(3018/04/03)
+            if(isset($_POST['regist'])){
+                if(array_key_exists('registerEmail',$_POST) OR array_key_exists('registerPassword',$_POST)){
+//                    echo "<p>Keyは存在します。</p>";
+                    if($_POST['registerEmail'] === ''){
+                        echo "<p>メールアドレスを入力してください。</p>";
+                    } elseif($_POST['registerPassword'] === ''){
+                        echo "<p>パスワードを入力してください</p>";
+                    } else {
+                        $query = "SELECT `id` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
+                        $result = mysqli_query($link,$query);
+                        // 初めての登録者だった場合
+                        if($result === FALSE){
+                            newRegist_($link, $_POST['registerEmail'], $_POST['registerPassword']);
+                        } else {
+                            if(mysqli_num_rows($result) > 0){
+                                echo "<p>このメールアドレスはすでに使用されています。</p>";
+                            } else {
+
+                            }
+                        }
+                    }
+                }
+            }
+        ?>
+        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
