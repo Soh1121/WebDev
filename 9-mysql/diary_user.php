@@ -13,74 +13,12 @@
     <body>
         <nav class="navbar navbar-dark bg-primary">
             <a class="navbar-brand" href="#">Diary Service</a>
-            <form method="post" class="form-inline">
-                <div class="form-group row">
-                    <input type="email" class="form-control my-1 mx-sm-2" placeholder="メールアドレス">
-                    <input type="password" class="form-control my-1 mx-sm-2" placeholder="パスワード">
-                    <button type="submit" class="btn btn-outline-light my-1 mx-sm-2" name="login">ログイン</button>
-                </div>
-            </form>
         </nav>
         
-        <div class="jumbotron">
-            <h1 class="display-4">Diary Service</h1>
-            <p class="lead">ユーザー登録をして、日記を投稿するサイトを作ってみましょう。</p>
-            <p class="lead">各ユーザーは自分の投稿した日記だけを参照することができます。</p>
-            <p class="lead">ユーザーはメールアドレスとパスワードでサイトに登録をします。</p>
-            <hr class="my-4">
-            <p>ユーザー登録がまだの方はメールアドレスとパスワードを登録ください。</p>
-            <div class="text-center">
-                <form method="post" class="form-inline">
-                    <input type="email" class="form-control my-1 mx-sm-2" name="registerEmail" placeholder="メールアドレス">
-                    <input type="password" class="form-control my-1 mx-sm-2" name="registerPassword" placeholder="パスワード">
-                    <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" name="regist">登録</button>
-                </form>
-            </div>
-        </div>
+        <h1>Hello, world!</h1>
         
         <?php
-            // 新規登録をする関数
-            function newRegist_($link, $registerEmail, $registerPassword){
-                
-                
-                
-            }
-            $link = mysqli_connect("localhost", "root", "root", "diaryapp");
-            
-            if(mysqli_connect_error()){
-                die("データベースへの接続に失敗しました。");
-            }
-        
-//            echo "<p>データベースへの接続に成功しました。</p>";
-            // データベースにユーザー登録するところから(3018/04/03)
-            if(isset($_POST['regist'])){
-                if(array_key_exists('registerEmail',$_POST) OR array_key_exists('registerPassword',$_POST)){
-//                    echo "<p>Keyは存在します。</p>";
-                    if($_POST['registerEmail'] === ''){
-                        echo "<p>メールアドレスを入力してください。</p>";
-                    } elseif($_POST['registerPassword'] === ''){
-                        echo "<p>パスワードを入力してください</p>";
-                    } else {
-                        $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
-                        $result = mysqli_query($link,$query);
-                        if(mysqli_num_rows($result) > 0){   // メールアドレスがすでに登録済みだった場合
-                            echo "<p>このメールアドレスはすでに使用されています。</p>";
-                        } else {    // メールアドレスが未登録の場合
-                            // usersテーブルにemailを登録
-                            $query = "INSERT INTO `users` (`email`) VALUES('".mysqli_real_escape_string($link,$_POST['registerEmail'])."')";
-                            $result = mysqli_query($link,$query);
-                            // 登録したemailのidを取得
-                            $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
-                            $result = mysqli_query($link,$query);
-                            $row = mysqli_fetch_array($result);
-                            // パスワードを暗号化して保存
-                            $query = "UPDATE `users` SET password='".mysqli_real_escape_string($link,md5(md5($row['userid']).$_POST['registerPassword']))."' WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."' LIMIT 1";
-                            $result = mysqli_query($link, $query);
-                            echo "<p>登録に成功しました。</p>";
-                        }
-                    }
-                }
-            }
+
         ?>
         
         <!-- Optional JavaScript -->
