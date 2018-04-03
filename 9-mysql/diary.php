@@ -41,17 +41,9 @@
         <?php
             // 新規登録をする関数
             function newRegist_($link, $registerEmail, $registerPassword){
-                // usersテーブルにemailを登録
-                $query = "INSERT INTO `users` (`email`) VALUES('".mysqli_real_escape_string($link,$registerEmail)."')";
-                $result = mysqli_query($link,$query);
-                // 登録したemailのidを取得
-                $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$registerEmail)."'";
-                $result = mysqli_query($link,$query);
-                $row = mysqli_fetch_array($result);
-                // パスワードを暗号化して保存
-                $query = "UPDATE `users` SET password='".mysqli_real_escape_string($link,md5(md5($row['userid']).$registerPassword))."' WHERE email='".mysqli_real_escape_string($link,$registerEmail)."' LIMIT 1";
-                $result = mysqli_query($link, $query);
-                echo "<p>登録に成功しました。</p>";
+                
+                
+                
             }
             $link = mysqli_connect("localhost", "root", "root", "diaryapp");
             
@@ -69,17 +61,22 @@
                     } elseif($_POST['registerPassword'] === ''){
                         echo "<p>パスワードを入力してください</p>";
                     } else {
-                        $query = "SELECT `id` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
+                        $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
                         $result = mysqli_query($link,$query);
-                        // 初めての登録者だった場合
-                        if($result === FALSE){
-                            newRegist_($link, $_POST['registerEmail'], $_POST['registerPassword']);
-                        } else {
-                            if(mysqli_num_rows($result) > 0){
-                                echo "<p>このメールアドレスはすでに使用されています。</p>";
-                            } else {
-
-                            }
+                        if(mysqli_num_rows($result) > 0){   // メールアドレスがすでに登録済みだった場合
+                            echo "<p>このメールアドレスはすでに使用されています。</p>";
+                        } else {    // メールアドレスが未登録の場合
+                            // usersテーブルにemailを登録
+                            $query = "INSERT INTO `users` (`email`) VALUES('".mysqli_real_escape_string($link,$_POST['registerEmail'])."')";
+                            $result = mysqli_query($link,$query);
+                            // 登録したemailのidを取得
+                            $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
+                            $result = mysqli_query($link,$query);
+                            $row = mysqli_fetch_array($result);
+                            // パスワードを暗号化して保存
+                            $query = "UPDATE `users` SET password='".mysqli_real_escape_string($link,md5(md5($row['userid']).$_POST['registerPassword']))."' WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."' LIMIT 1";
+                            $result = mysqli_query($link, $query);
+                            echo "<p>登録に成功しました。</p>";
                         }
                     }
                 }
