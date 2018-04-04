@@ -44,7 +44,21 @@
                 </div>
                 <div class="col m-sm-2">
                     <?php
-                        echo $_SESSION['userid'];
+//                        echo $_SESSION['userid'];
+                        $link = mysqli_connect("localhost", "root", "root", "diaryapp");
+                
+                        if(mysqli_connect_error()){
+                            die("データベースへの接続に失敗しました。");
+                        }
+//                        echo "<p>データベースの接続に成功しました。</p>";
+                        // ログインしたユーザーの記事があるかどうか確認
+                        $query = "SELECT * FROM articles WHERE userid='".mysqli_real_escape_string($link,$_SESSION['userid'])."'";
+                        $result = mysqli_query($link,$query);
+                        if(mysqli_num_rows($result) > 0){
+                            echo "<p>記事あり</p>";
+                        } else {
+                            echo "<h2>記事を投稿してみよう！</h2>";
+                        };
                     ?>
                 </div>
             </div>
