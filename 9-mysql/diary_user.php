@@ -1,5 +1,7 @@
 <?php
     session_start();
+    
+
 ?>
 
 <!doctype html>
@@ -33,13 +35,13 @@
                     <form method="post">
                         <div class="form-group">
                             <label for="inputTitle" class="m-sm-2">タイトル</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="タイトル">
+                            <input type="text" class="form-control" name="inputTitle" placeholder="タイトル">
                             <label for="inputDate" class="m-sm-2">日付</label>
-                            <input type="text" class="form-control" id="inputDate" placeholder="2018年03月02日">
+                            <input type="text" class="form-control" name="inputDate" placeholder="2018年03月02日">
                             <label for="inputBody" class="m-sm-2">本文</label>
-                            <textarea class="form-control" id="inputBody" rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" name="post">投稿</button>
+                            <textarea class="form-control" name="inputBody" rows="5"></textarea>
+                        </div>                  
+                        <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" name="postdiary">投稿</button>
                     </form>
                 </div>
                 <div class="col m-sm-2">
@@ -59,6 +61,29 @@
                         } else {
                             echo "<h2>記事を投稿してみよう！</h2>";
                         };
+                
+                        // 投稿ボタンが押されたとき
+                        if(isset($_POST['postdiary'])){
+                            if(array_key_exists('inputTitle',$_POST) OR array_key_exists('inputDate',$_POST) OR array_key_exists('inputBody',$_POST)){
+                                if($_POST['inputTitle'] === ''){
+                                    echo "<p>タイトルを入力してください。</p>";
+                                } elseif($_POST['inputDate'] === ''){
+                                    echo "<p>日付を入力してください。</p>";
+                                } elseif($_POST['inputBody'] === ''){
+                                    echo "<p>本文を入力してください。</p>";
+                                } else {
+                                    $userid = (int)$_SESSION['userid'];
+                                    $query = "INSERT INTO `articles` (`userid`,`date`,`title`,`body`) VALUES ($userid,'".mysqli_real_escape_string($link,$_POST['inputDate'])."','".mysqli_real_escape_string($link,$_POST['inputTitle'])."','".mysqli_real_escape_string($link,$_POST['inputBody'])."')";
+                                    if($result = mysqli_query($link,$query)){
+                                        echo "OK";
+                                    } else {
+                                        echo "NG";
+                                    }
+                                }
+                            } else {
+//                                echo "<p>keyは存在しません。</p>";
+                            }
+                        }
                     ?>
                 </div>
             </div>

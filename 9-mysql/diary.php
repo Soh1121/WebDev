@@ -10,7 +10,7 @@
         // 登録ボタンが押されたとき
         if(isset($_POST['regist'])){
             if(array_key_exists('registerEmail',$_POST) OR array_key_exists('registerPassword',$_POST)){
-                echo "<p>Keyは存在します。</p>";
+//                echo "<p>Keyは存在します。</p>";
                 if($_POST['registerEmail'] === ''){
                     echo "<p>登録メールアドレスを入力してください。</p>";
                 } elseif($_POST['registerPassword'] === ''){
