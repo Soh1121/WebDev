@@ -1,7 +1,26 @@
 <?php
     session_start();
-    
-
+    function display_(){
+        $link = mysqli_connect("localhost", "root", "root", "diaryapp");
+        if(mysqli_connect_error()){
+            die("データベースへの接続に失敗しました。");
+        }
+        $query = "SELECT * FROM articles WHERE userid='".mysqli_real_escape_string($link,$_SESSION['userid'])."' ORDER BY `articleid` DESC";
+        $result = mysqli_query($link,$query);
+        echo '<script>var articleZone = document.getElementById("articles");articleZone.innerHTML = "";</script>';
+        if(mysqli_num_rows($result) > 0){
+//            echo "<p>記事あり</p>";
+            while($row = mysqli_fetch_array($result)){
+                echo "<h2>".$row['title']."</h2>";
+                echo "<p>".$row['date']."</p>";
+                echo "<p>".$row['body']."</p>";
+                echo "<hr>";
+                array_push($_SESSION['displayed'], $row['articleid']);
+            }
+        } else {
+            echo '<script type="text/javascript">alert("表示できる記事がありません。");</script>';
+        };
+    }
 ?>
 
 <!doctype html>
@@ -24,7 +43,7 @@
     </head>
     <body>
         <nav class="navbar navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Diary Service</a>
+            <a class="navbar-brand" href="diary.php">Diary Service</a>
             <span class="navbar-text">ようこそ、<?php echo $_SESSION['email']?> さん</span>
         </nav>
         
@@ -44,7 +63,7 @@
                         <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" name="postdiary">投稿</button>
                     </form>
                 </div>
-                <div class="col m-sm-2">
+                <div class="col m-sm-2" id="articles">
                     <?php
 //                        echo $_SESSION['userid'];
                         $link = mysqli_connect("localhost", "root", "root", "diaryapp");
@@ -57,31 +76,39 @@
                         $query = "SELECT * FROM articles WHERE userid='".mysqli_real_escape_string($link,$_SESSION['userid'])."'";
                         $result = mysqli_query($link,$query);
                         if(mysqli_num_rows($result) > 0){
-                            echo "<p>記事あり</p>";
+                            $query = "SELECT * FROM articles WHERE userid='".mysqli_real_escape_string($link,$_SESSION['userid'])."' ORDER BY `articleid` DESC";
+                            $result = mysqli_query($link,$query);
+                            $_SESSION['displayed'] = [];
+                            if(mysqli_num_rows($result) > 0){
+//                                echo "<p>記事あり</p>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<h2>".$row['title']."</h2>";
+                                    echo "<p>".$row['date']."</p>";
+                                    echo "<p>".$row['body']."</p>";
+                                    echo "<hr>";
+                                    array_push($_SESSION['displayed'], $row['articleid']);
+                                }
+                            }
                         } else {
-                            echo "<h2>記事を投稿してみよう！</h2>";
+                            echo '<script type="text/javascript">alert("表示できる記事がありません。");</script>';
                         };
-                
+                        
                         // 投稿ボタンが押されたとき
                         if(isset($_POST['postdiary'])){
                             if(array_key_exists('inputTitle',$_POST) OR array_key_exists('inputDate',$_POST) OR array_key_exists('inputBody',$_POST)){
                                 if($_POST['inputTitle'] === ''){
-                                    echo "<p>タイトルを入力してください。</p>";
+                                    echo '<script type="text/javascript">alert("タイトルを入力してください。");</script>';
                                 } elseif($_POST['inputDate'] === ''){
-                                    echo "<p>日付を入力してください。</p>";
+                                    echo '<script type="text/javascript">alert("日付を入力してください。");</script>';
                                 } elseif($_POST['inputBody'] === ''){
-                                    echo "<p>本文を入力してください。</p>";
+                                    echo '<script type="text/javascript">alert("本文を入力してください。");</script>';
                                 } else {
                                     $userid = (int)$_SESSION['userid'];
                                     $query = "INSERT INTO `articles` (`userid`,`date`,`title`,`body`) VALUES ($userid,'".mysqli_real_escape_string($link,$_POST['inputDate'])."','".mysqli_real_escape_string($link,$_POST['inputTitle'])."','".mysqli_real_escape_string($link,$_POST['inputBody'])."')";
                                     if($result = mysqli_query($link,$query)){
-                                        echo "OK";
-                                    } else {
-                                        echo "NG";
+                                        display_();
                                     }
                                 }
-                            } else {
-//                                echo "<p>keyは存在しません。</p>";
                             }
                         }
                     ?>
