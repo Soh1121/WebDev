@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $link = mysqli_connect("localhost", "root", "root", "diaryapp");
 
         if(mysqli_connect_error()){
@@ -54,12 +55,16 @@
                          $row = mysqli_fetch_array($result);
                          if(md5(md5($row['userid']).$_POST['loginPassword']) === $row['password']){ // パスワードが一致した場合
 //                            echo "<p>パスワードが一致しました。</p>";
-                            // ユーザー画面へ移行
-                            $url = "diary_user.php";
-                            header('Location: '. $url, true, 301);
-                            exit();
+                             // ユーザー画面へ移行
+                             $url = "diary_user.php";
+                             // 記事を探すためのuserid、ログイン情報を表示するためのemailをセッションに記憶
+                             $_SESSION["userid"] = $row['userid'];
+                             $_SESSION["email"] = $_POST['loginEmail'];
+                             // ユーザーページへ移動
+                             header('Location: '. $url, true, 301);
+                             exit();
                          } else {
-                            echo "<p>メールアドレスもしくはパスワードが誤っています。</p>";
+                             echo "<p>メールアドレスもしくはパスワードが誤っています。</p>";
                          }
                      } else {
                          echo "<p>エラー</p>";

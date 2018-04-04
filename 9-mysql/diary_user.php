@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
 ?>
 
 <!doctype html>
@@ -23,7 +23,9 @@
     <body>
         <nav class="navbar navbar-dark bg-primary">
             <a class="navbar-brand" href="#">Diary Service</a>
+            <span class="navbar-text">ようこそ、<?php echo $_SESSION['email']?> さん</span>
         </nav>
+        
         <div class="container">
             <div class="row fix">
                 <div class="col m-sm-2">
@@ -41,7 +43,9 @@
                     </form>
                 </div>
                 <div class="col m-sm-2">
-                    2 of 2
+                    <?php
+                        echo $_SESSION['userid'];
+                    ?>
                 </div>
             </div>
         </div>
