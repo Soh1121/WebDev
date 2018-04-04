@@ -1,5 +1,9 @@
 <?php
+    function alert_($line){
+        
+    }
     session_start();
+    date_default_timezone_set('Asia/Tokyo');
     $link = mysqli_connect("localhost", "root", "root", "diaryapp");
 
         if(mysqli_connect_error()){
@@ -12,14 +16,14 @@
             if(array_key_exists('registerEmail',$_POST) OR array_key_exists('registerPassword',$_POST)){
 //                echo "<p>Keyは存在します。</p>";
                 if($_POST['registerEmail'] === ''){
-                    echo "<p>登録メールアドレスを入力してください。</p>";
+                    echo '<script type="text/javascript">alert("登録メールアドレスを入力してください。");</script>';
                 } elseif($_POST['registerPassword'] === ''){
-                    echo "<p>登録パスワードを入力してください</p>";
+                    echo '<script type="text/javascript">alert("登録パスワードを入力してください。");</script>';
                 } else {
                     $query = "SELECT `userid` FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."'";
                     $result = mysqli_query($link,$query);
                     if(mysqli_num_rows($result) > 0){   // メールアドレスがすでに登録済みだった場合
-                        echo "<p>このメールアドレスはすでに使用されています。</p>";
+                        echo '<script type="text/javascript">alert("このメールアドレスはすでに使用されています。");</script>';
                     } else {    // メールアドレスが未登録の場合
                         // usersテーブルにemailを登録
                         $query = "INSERT INTO `users` (`email`) VALUES('".mysqli_real_escape_string($link,$_POST['registerEmail'])."')";
@@ -31,7 +35,20 @@
                         // パスワードを暗号化して保存
                         $query = "UPDATE `users` SET password='".mysqli_real_escape_string($link,md5(md5($row['userid']).$_POST['registerPassword']))."' WHERE email='".mysqli_real_escape_string($link,$_POST['registerEmail'])."' LIMIT 1";
                         $result = mysqli_query($link, $query);
-                        echo "<p>登録に成功しました。</p>";
+                        // 初期記事の仕込み
+                        $userid = $row['userid'];
+                        $date = date('Y年m月d日');
+                        $query = "INSERT INTO `articles` (`userid`,`date`,`title`,`body`) VALUES($userid,'".$date."','ようこそ！Diary Serviceへ！','ようこそ！Diary Serviceへ！早速、最初の記事を投稿してみましょう。')";
+                        $result = mysqli_query($link, $query);
+                        // ユーザー画面へ移行
+                        $url = "diary_user.php";
+                        // 記事を探すためのuserid、ログイン情報を表示するためのemailをセッションに記憶
+                        $_SESSION["userid"] = $userid;
+                        $_SESSION["email"] = $_POST['registerEmail'];
+                        // ユーザーページへ移動
+                        header('Location: '. $url, true, 301);
+                        exit();
+//                        echo '<script type="text/javascript">alert("登録に成功しました。");</script>';
                     }
                 }
             }
@@ -42,14 +59,14 @@
 //            echo "<p>ログインボタンが押されました。</p>";
             if(array_key_exists('loginEmail', $_POST) OR array_key_exists('loginPassword', $_POST)){
                  if($_POST['loginEmail'] === ''){   // ログインメールアドレスが入力されていなかった場合
-                    echo "<p>ログインメールアドレスを入力してください。</p>";
+                    echo '<script type="text/javascript">alert("ログインメールアドレスを入力してください。");</script>';
                  } elseif($_POST['loginPassword'] === ''){  // ログインパスワードが入力されていなかった場合
-                    echo "<p>ログインパスワードを入力してください</p>";
+                    echo '<script type="text/javascript">alert("ログインパスワードを入力してください。");</script>';
                  } else {   // ログイン情報が正常に入力されていた場合
                      $query = "SELECT * FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['loginEmail'])."'";
                      $result = mysqli_query($link,$query);
                      if(mysqli_num_rows($result) === 0){    // メールアドレスが見つからなかった場合
-                         echo "<p>メールアドレスもしくはパスワードが誤っています。</p>";
+                         echo '<script type="text/javascript">alert("メールアドレスもしくはパスワードが誤っています。");</script>';
                      } else if(mysqli_num_rows($result) === 1){ // メールアドレスがひとつだけ見つかった場合
 //                             echo "一致するメールアドレスが発見されました。</p>";
                          $row = mysqli_fetch_array($result);
@@ -64,10 +81,10 @@
                              header('Location: '. $url, true, 301);
                              exit();
                          } else {
-                             echo "<p>メールアドレスもしくはパスワードが誤っています。</p>";
+                             echo '<script type="text/javascript">alert("メールアドレスもしくはパスワードが誤っています。");</script>';
                          }
                      } else {
-                         echo "<p>エラー</p>";
+                         echo '<script type="text/javascript">alert("エラー");</script>';
                      }
                  }
             }
