@@ -4,7 +4,7 @@
     $error = "";
     
     if (array_key_exists('city', $_GET)) {
-        echo file_get_contents("http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=8367ff469711bc4d990e3326ce129e11");
+        echo file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".$_GET['city']."&appid=8367ff469711bc4d990e3326ce129e11");
     }
 ?>
 
