@@ -32,22 +32,32 @@
             </div>
         </div>
         
-        <!-- jQuery Bootstrapで使ってそうだけどいるのかな…？ -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
-        <script type="text/javascript">
-            $("#search").click(function(){
-                var place = $("#placeName").val();
-//                alert(val);
-                var query = "https://maps.googleapis.com/maps/api/geocode/json?address=" + place + "&key=AIzaSyAOem6fAHZZTguVJbLA34Lk2pFNOqS2-0s";
-                alert(query);
-            })
-        </script>
-        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script type="text/javascript">
+            $("#search").click(function(){
+                var place = $("#placeName").val();
+//                alert(place);
+                var query = "https://maps.googleapis.com/maps/api/geocode/json?address=" + place + "&key=AIzaSyAOem6fAHZZTguVJbLA34Lk2pFNOqS2-0s";
+//                alert(query);
+                $.ajax({
+                    url: query,
+                    type: "GET",
+                    success: function(data){
+//                        console.log(data);
+                        $.each(data['results'][0], function(key, value){
+                            alert(key);
+                        })
+                    }
+                })
+            })
+        </script>
     </body>
 </html>
