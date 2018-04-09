@@ -25,12 +25,24 @@
             <p class="lead">入力フォームを１つ持つこと。</p>
             <p>住所の一部を入力すると、該当するデータがあれば郵便番号を表示すること。</p>
             <div class="text-center">
-                <form method="get" class="form-inline">
-                    <input type="text" class="form-control my-1 mx-sm-2" name="placeName" placeholder="地名">
-                    <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" name="search">検索</button>
+                <form method="post" class="form-inline">
+                    <input type="text" class="form-control my-1 mx-sm-2" id="placeName" placeholder="地名">
+                    <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" id="search">検索</button>
                 </form>
             </div>
         </div>
+        
+        <!-- jQuery Bootstrapで使ってそうだけどいるのかな…？ -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script type="text/javascript">
+            $("#search").click(function(){
+                var place = $("#placeName").val();
+//                alert(val);
+                var query = "https://maps.googleapis.com/maps/api/geocode/json?address=" + place + "&key=AIzaSyAOem6fAHZZTguVJbLA34Lk2pFNOqS2-0s";
+                alert(query);
+            })
+        </script>
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
