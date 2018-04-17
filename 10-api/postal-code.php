@@ -27,9 +27,12 @@
             <div class="text-center">
                 <form method="post" class="form-inline">
                     <input type="text" class="form-control my-1 mx-sm-2" id="placeName" placeholder="地名">
-                    <button type="submit" class="btn btn-outline-primary my-1 mx-sm-2" id="search">検索</button>
+                    <button type="button" class="btn btn-outline-primary my-1 mx-sm-2" id="search">検索</button>
                 </form>
             </div>
+        </div>
+        <div class="text-center" id="result">
+            <p></p>
         </div>
         
         <!-- Optional JavaScript -->
@@ -42,22 +45,28 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
         <script type="text/javascript">
-            $("#search").click(function(){
-                var place = $("#placeName").val();
-//                alert(place);
-                var query = "https://maps.googleapis.com/maps/api/geocode/json?address=" + place + "&key=AIzaSyAOem6fAHZZTguVJbLA34Lk2pFNOqS2-0s";
-//                alert(query);
-                $.ajax({
-                    url: query,
-                    type: "GET",
-                    success: function(data){
-//                        console.log(data);
-                        $.each(data['results'][0], function(key, value){
-                            alert(key);
-                        })
-                    }
-                })
-            })
+            $(function(){
+                $("#search").click(function(){
+                    var place = $("#placeName").val();
+//                    alert(place);
+                    var query = "https://maps.googleapis.com/maps/api/geocode/json?address=" + place + "&key=AIzaSyAOem6fAHZZTguVJbLA34Lk2pFNOqS2-0s";
+//                    alert(query);
+                    $.ajax({
+                        url: query,
+                        type: "GET",
+                        success: function(data){
+//                            console.log(data);
+                            $.each(data['results'][0]['address_components'], function(key, value){
+                                if(value["types"][0] === "postal_code"){
+//                                    alert(value["long_name"]);
+                                    ans = value["long_name"];
+                                    $('#result').html("<p>その場所の郵便番号は " + ans + " となります。</p>");
+                                }
+                            });
+                        }
+                    });
+                });
+            });
         </script>
     </body>
 </html>
