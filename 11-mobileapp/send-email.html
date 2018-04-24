@@ -11,6 +11,26 @@
 
     <body>
         <div class="app-page" data-page="home">
+            <div class="app-topbar blue">
+                <div class="app-title">Send An Email</div>
+            </div>
+            
+            <div class="app-content">
+                <p class="app-section">
+                   Click below to send an email! 
+                </p>
+                
+                <div class="app-section">
+                    <div class="app-button redirect" data-clickable-class="active"></div>
+                </div>
+                
+                <div class="app-section">
+                    <div class="app-button">Send to new user</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="app-page" data-page="sendemail">
             <div class="app-topbar">
                 <div class="app-title">Send Email</div>
                 <div class="app-button right" data-target="done">Done</div>
@@ -35,35 +55,22 @@
             </div>
         </div>
 
-    <div class="app-page" data-page="page2">
-      <div class="app-topbar">
-        <div class="app-button left" data-back data-autotitle></div>
-        <div class="app-title">Page 2</div>
-      </div>
-      <div class="app-content">
-        Page 2 is lonely
-      </div>
-    </div>
-      
-    <div class="app-page" data-page="done">
-    </div>
+        <script src="zepto.js"></script>
+        <script src="app.min.js"></script>
+        <script>
+            App.controller('home', function (page) {
+                // put stuff here
+            });
 
-    <script src="zepto.js"></script>
-    <script src="app.min.js"></script>
-    <script>
-      App.controller('home', function (page) {
-        // put stuff here
-      });
+            App.controller('page2', function (page) {
+                // put stuff here
+            });
 
-      App.controller('page2', function (page) {
-        // put stuff here
-      });
-
-      try {
-        App.restore();
-      } catch (err) {
-        App.load('home');
-      }
-    </script>
-  </body>
+            try {
+                App.restore();
+            } catch (err) {
+                App.load('home');
+            }
+        </script>
+    </body>
 </html>
