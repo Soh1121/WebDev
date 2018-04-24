@@ -20,12 +20,10 @@
                    Click below to send an email! 
                 </p>
                 
-                <div class="app-section">
-                    <div class="app-button redirect" data-clickable-class="active"></div>
-                </div>
+                <div class="app-section" id="contact-list"></div>
                 
                 <div class="app-section">
-                    <div class="app-button">Send to new user</div>
+                    <div class="app-button" id="new-user">Send to new user</div>
                 </div>
             </div>
         </div>
@@ -33,7 +31,7 @@
         <div class="app-page" data-page="sendemail">
             <div class="app-topbar">
                 <div class="app-title">Send Email</div>
-                <div class="app-button right" data-target="done">Done</div>
+                <div class="app-button right" data-back>Done</div>
             </div>
             
             <div class="app-content">
@@ -59,7 +57,34 @@
         <script src="app.min.js"></script>
         <script>
             App.controller('home', function (page) {
-                // put stuff here
+                if(typeof localStorage !== 'undefined'){
+                    $(page).find("#new-user")
+                    .clickable()
+                    .click(function(){
+                        if(localStorage.getItem("recipient-email") !== null){
+                            localStorage.removeItem("recipient-email");
+                        }
+                        App.load("sendemail");
+                    });
+                    
+                    if(localStorage.getItem("recipient-list") !== null){
+                        var recipientList = JSON.parse(localStorage.getItem("recipient-list"));
+                        $.each(recipientList, function(index, value){
+                            $(page).find("#contact-list").append('<div class="app-button redirect">' + value + '</div>');
+                        });
+                        
+                        $(page).find("#contact-list").show();
+                        
+                        $(page).find(".redirect")
+                        .clickable()
+                        .on("click", function(){
+                            localStorage.setItem("recipient-email", $(this).html());
+                            App.load('sendemail');
+                        });
+                    } else {
+                        $(page).find("#contact-list").hide();
+                    }
+                }
             });
 
             App.controller('page2', function (page) {
