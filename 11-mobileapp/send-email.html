@@ -35,14 +35,16 @@
             </div>
             
             <div class="app-content">
+                <div class="app-section" id="message"></div>
+                
                 <div class="app-section">
                     <p>From:</p>
-                    <input class="app-input" placeholder="Sender Email Address">
+                    <input class="app-input" id="sender-email" placeholder="Sender Email Address">
                 </div>
                 
                 <div class="app-section">
                     <p>To:</p>
-                    <input class="app-input" placeholder="Recipient Email Address">
+                    <input class="app-input" id="recipient-email" placeholder="Recipient Email Address">
                 </div>
                 
                 <div class="app-section">
@@ -87,8 +89,16 @@
                 }
             });
 
-            App.controller('page2', function (page) {
-                // put stuff here
+            App.controller('sendemail', function (page) {
+                $(page).find("#message").hide();
+                if(typeof localStorage !== 'undefined'){
+                    if(localStorage.getItem("sender-email") !== null){
+                        $(page).find("#sender-email").val(localStorage.getItem("sender-email"));
+                    }
+                    if(localStorage.getItem("recipient-email") !== null){
+                        $(page).find("#recipient-email").val(localStorage.getItem("recipient-email"));
+                    }
+                }
             });
 
             try {
