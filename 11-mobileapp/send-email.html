@@ -48,9 +48,9 @@
                 </div>
                 
                 <div class="app-section">
-                    <input class="app-input" placeholder="Subject">
-                    <textarea class="app-input" placeholder="Message"></textarea>
-                    <div class="app-button green">Send</div>
+                    <input class="app-input" id="subject" placeholder="Subject">
+                    <textarea class="app-input" id="content" placeholder="Message"></textarea>
+                    <div class="app-button green" id="send-button">Send</div>
                 </div>
             </div>
         </div>
@@ -91,6 +91,7 @@
 
             App.controller('sendemail', function (page) {
                 $(page).find("#message").hide();
+                
                 if(typeof localStorage !== 'undefined'){
                     if(localStorage.getItem("sender-email") !== null){
                         $(page).find("#sender-email").val(localStorage.getItem("sender-email"));
@@ -99,6 +100,31 @@
                         $(page).find("#recipient-email").val(localStorage.getItem("recipient-email"));
                     }
                 }
+                
+                $(page).find("#send-button")
+                    .clickable()
+                    .on('click', function(){
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost/11-mobileapp/send-email.php?callback=response',
+                        // data to be added to query string:
+                        data: {to: $("#recipient-email").val(), from: $("#sender-email").val(), subject: $("#subject").val(), content: $("#content").val()},
+                        // type of data we expecting in return:
+                        dataType: 'jsonp',
+                        timeout: 300,
+                        context: $('body'),
+                        success: function(data){
+                            if(data.success == true){
+                                $(page).find("#message").html("Your email was sent successfully!").show();
+                            }else{
+                                $(page).find("#message").html("Your email could not be sent - please try again later.").show();
+                            }
+                        },
+                        error: function(xhr, type){
+                            $(page).find("#message").html("Your email could not be sent - please try again later.").show();
+                        }
+                    })
+                })
             });
 
             try {
