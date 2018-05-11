@@ -13,6 +13,4 @@ for i in range(3, 51):
     if flag == 0:
         prime.append(i)
 
-prime.insert(0, 1)
-prime.insert(0, 0)
 print prime
