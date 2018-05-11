@@ -3,9 +3,16 @@
 print 'content-type: text/html'
 print ''
 
-name = "Rob"
+prime = [2]
 
-if name == "Rob" or name == "Kirsten":
-    print "Hello " + name + "!"
-else:
-    print "I don't know."
+for i in range(3, 51):
+    flag = 0
+    for j in prime:
+        if i % j == 0:
+            flag = 1
+    if flag == 0:
+        prime.append(i)
+
+prime.insert(0, 1)
+prime.insert(0, 0)
+print prime
