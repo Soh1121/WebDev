@@ -3,51 +3,33 @@
 print 'content-type: text/html'
 print ''
 
-age = 35
+for i in range(5, 11):
+    print i
 
-print age
+print "Rob"
 
-pi = 3.14
+list = ["pizza", "chocholate", "ice cream"]
 
-print pi
+# I like eating ***
 
-name = "Rob"
+print "<br>"
+for food in list:
+    print "I like eating " + food + "."
+    print "<br>"
 
-print name
+x = 0
+while x <= 10:
+    print x
+    x = x + 1
+    # x += 1
+print "<br>"
 
-print age / pi
+ages = {}
+ages["Rob"] = 35
+ages["Kirsteen"] = 36
+ages["Tommy"] = 5
+ages["Raphie"] = 1
 
-number = "5"
-
-print number * age
-
-print '<br>'
-
-print int(number) * 5
-
-print int(number) * age
-
-print int(number) * pi
-
-str = "My name is Rob"
-print str[0]
-print str[0:6]
-print str[5]
-
-myList = ["Apple", "banana", "orange"]
-print myList
-print myList[1]
-print myList[1:4]
-
-myTuple = (1,2,3,4)
-print myTuple
-
-dict = {}
-dict["dad"] = "Rob"
-dict["mum"] = "Kirsten"
-dict[1] = "Tommy"
-dict[2] = "Raphie"
-print dict
-print dict["mum"]
-print dict.keys()
-print dict.values()
+for age in ages:
+    print age + " is " + str(ages[age]) + "."
+    
