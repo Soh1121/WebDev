@@ -37,7 +37,7 @@
           $error = "Couldn't create user - please try again later";
         }
       }
-    }else{
+    }else{ # ログインの処理
       $query = "SELECT * FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
       $result = mysqli_query($link, $query);
       $row = mysqli_fetch_assoc($result);
