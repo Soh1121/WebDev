@@ -34,7 +34,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <a id="toggleLogin">Sign up</a>
+            <p id="toggleLogin">Sign up</p>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" id="loginSignupButton" class="btn btn-primary">Login</button>
           </div>

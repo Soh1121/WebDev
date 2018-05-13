@@ -1,13 +1,20 @@
 #toggleLogin {
-  padding-right: 15px;
+  padding-right: 11px;
 }
 
 #loginAlert {
   display: none;
 }
 
-a:not([href]):not([tabindex]) {
+p#toggleLogin {
   color: #007bff;
+  height: 20px;
+  line-height: 36px;
+}
+
+p#toggleLogin:hover {
+  color: #014c8c;
+  text-decoration: underline;
 }
 
 /* Sticky footer styles

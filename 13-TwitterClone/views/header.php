@@ -32,7 +32,7 @@
         </ul>
       </div>
       <div class="form-inline pull-xs-right">
-        <?php if($_SESSION['id']){ ?>
+        <?php if(isset($_SESSION['id'])){ ?>
           <a class="btn btn-outline-success" href="?function=logout">Logout</a>
         <?php } else { ?>
           <button class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">Login/Signup</button>
