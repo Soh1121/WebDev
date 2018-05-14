@@ -5,4 +5,7 @@
   <div class="row">
     <?php displayTweets('public'); ?>
   </div>
+  <div class="col-md-4">
+    <?php displaySearch(); ?>
+  </div>
 </div>

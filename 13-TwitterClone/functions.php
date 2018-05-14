@@ -42,6 +42,10 @@
     global $link;
     if($type === 'public'){
       $whereClause = "";
+    } else if ($type === 'search') {
+      echo '<p>Showing search results for "'.mysqli_real_escape_string($link, $_GET['q']).'":</p>';
+
+      $whereClause = "WHERE tweet LIKE '%".mysqli_real_escape_string($link, $_GET['q'])."%'";
     }
 
     $query = "SELECT * FROM tweets ".$whereClause." ORDER BY `datetime` DESC LIMIT 10";
@@ -69,5 +73,9 @@
         echo "</a></p></div>";
       }
     }
+  }
+
+  function displaySearch() {
+    echo '<form class="form-inline"><div class="form-group"><input type="hidden" name="page" value="search"><input type="text" name="q" class="form-control" id="search" placeholder="Search"></div><button type="submit" class="btn btn-primary">Search Tweets</button></form>';
   }
 ?>

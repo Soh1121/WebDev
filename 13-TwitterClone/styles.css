@@ -17,6 +17,10 @@ p#toggleLogin:hover {
   text-decoration: underline;
 }
 
+.mainContainer {
+  padding: 20px;
+}
+
 .time {
   color: lightgrey;
 }
