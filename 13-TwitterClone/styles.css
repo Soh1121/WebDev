@@ -6,6 +6,14 @@
   display: none;
 }
 
+#tweetSuccess {
+  display: none;
+}
+
+#tweetFail {
+  display: none;
+}
+
 p#toggleLogin {
   color: #007bff;
   height: 20px;

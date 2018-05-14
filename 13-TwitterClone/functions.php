@@ -58,11 +58,11 @@
         $userQueryResult = mysqli_query($link, $userQuery);
         $user = mysqli_fetch_assoc($userQueryResult);
 
-        echo "<div class='tweet'><p><a href='?page=publicprofiles&userid=".$user['id']."'>".$user['email']."</a> <span class='time'>".time_since(time() - strtotime($row['datetime']))."ago</span>:</p>";
+        echo "<div class='tweet'><p><a href='?page=publicprofiles&userid=".$user['id']."'>".$user['email']."</a> <span class='time'>".time_since(time() - strtotime($row['datetime']))." ago</span>:</p>";
 
         echo "<p>".$row['tweet']."</p>";
 
-        echo "<p><a class='toggleFollow' data-userId='".$row['userid']."'>'";
+        echo "<p><a class='toggleFollow'  data-userId='".$row['userid']."'>";
         $isFollowingQuery = "SELECT * FROM `isFollowing` WHERE follower = ".mysqli_real_escape_string($link, $_SESSION['id'])." AND isFollowing = ".mysqli_real_escape_string($link, $row['userid'])." LIMIT 1";
         $isFollowingQueryResult = mysqli_query($link, $isFollowingQuery);
         if(mysqli_num_rows($isFollowingQueryResult) > 0){
@@ -77,5 +77,9 @@
 
   function displaySearch() {
     echo '<form class="form-inline"><div class="form-group"><input type="hidden" name="page" value="search"><input type="text" name="q" class="form-control" id="search" placeholder="Search"></div><button type="submit" class="btn btn-primary">Search Tweets</button></form>';
+  }
+
+  function displayTweetBox() {
+    echo '<div id="tweetSuccess" class="alert alert-success"><p>Your tweet was posted successfully.</p></div><div id="tweetFail" class="alert alert-danger"></div><div class="form"><textarea class="form-control" id="tweetContent"></textarea></div><button id="postTweetButton" class="btn btn-primary">Post Tweet</button>';
   }
 ?>

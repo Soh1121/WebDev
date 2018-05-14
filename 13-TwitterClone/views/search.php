@@ -6,6 +6,8 @@
     </div>
     <div class="col-md-4">
       <?php displaySearch(); ?>
+      <hr>
+      <?php displayTweetBox(); ?>
     </div>
   </div>
 </div>

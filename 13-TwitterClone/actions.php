@@ -49,9 +49,22 @@
       }
     }
 
-    if($error !== ""){
+    if($error !== "") {
       echo $error;
       exit();
+    }
+  }
+
+  # ツイートが投稿されたとき
+  if ($_GET['action'] === 'postTweet') {
+    if(!$_POST['tweetContent']) {
+      echo "Your tweet is empty!";
+    } else if (strlen($_POST['tweetContent']) > 140) {
+      echo "Your tweet is too long!";
+    } else {
+      mysqli_query($link, "INSERT INTO tweets (`datetime`, `tweet`, `userid`) VALUES (NOW(), '".mysqli_real_escape_string($link, $_POST['tweetContent'])."', '".mysqli_real_escape_string($link, $_SESSION['id'])."')");
+
+      echo "1";
     }
   }
 ?>
