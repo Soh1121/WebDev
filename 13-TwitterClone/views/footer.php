@@ -46,6 +46,7 @@
     </div>
 
     <script>
+      // サインアップ・ログインの切り替え
       $("#toggleLogin").click(function(){
         if($("#loginActive").val() === "1"){
           $("#loginActive").val("0");
@@ -60,6 +61,7 @@
         }
       })
 
+      // サインアップ・ログインボタンが押されたら
       $("#loginSignupButton").click(function(){
         $.ajax({
           type: "POST",
@@ -75,6 +77,25 @@
         })
       })
 
+      // フォロー・リムーブ機能
+      $(".toggleFollow").click(function(){
+        var id = $(this).attr("data-userId");
+
+        $.ajax({
+          type: "POST",
+          url: "actions.php?action=toggleFollow",
+          data: "userId=" + id,
+          success: function(result) {
+            if (result === "1") {
+              $("a[data-userId='" + id + "']").html("Follow");
+            } else if (result === "2") {
+              $("a[data-userId='" + id + "']").html("Unfollow");
+            }
+          }
+        })
+      })
+
+      // Tweetボタンが押されたら
       $('#postTweetButton').click(function(){
         $.ajax({
           type: "POST",

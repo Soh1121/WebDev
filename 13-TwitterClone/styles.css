@@ -14,13 +14,13 @@
   display: none;
 }
 
-p#toggleLogin {
+p#toggleLogin.toggleFollow {
   color: #007bff;
   height: 20px;
   line-height: 36px;
 }
 
-p#toggleLogin:hover {
+p#toggleLogin.toggleFollow:hover {
   color: #014c8c;
   text-decoration: underline;
 }
