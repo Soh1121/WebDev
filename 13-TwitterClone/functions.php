@@ -42,6 +42,16 @@
     global $link;
     if($type === 'public'){
       $whereClause = "";
+    } else if ($type === 'isFollowing') {
+      $query = "SELECT * FROM isFollowing WHERE follower = ".mysqli_real_escape_string($link, $_SESSION['id'])." ";
+      $result = mysqli_query($link, $query);
+
+      $whereClause = "";
+      while ($row = mysqli_fetch_assoc($result)) {
+        if($whereClause === "") $whereClause = "WHERE";
+        else $whereClause .= " OR";
+        $whereClause .= " userid = ".$row['isFollowing'];
+      }
     } else if ($type === 'search') {
       echo '<p>Showing search results for "'.mysqli_real_escape_string($link, $_GET['q']).'":</p>';
 
