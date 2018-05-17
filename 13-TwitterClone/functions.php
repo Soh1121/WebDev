@@ -58,6 +58,13 @@
       echo '<p>Showing search results for "'.mysqli_real_escape_string($link, $_GET['q']).'":</p>';
 
       $whereClause = "WHERE tweet LIKE '%".mysqli_real_escape_string($link, $_GET['q'])."%'";
+    } else if (is_numeric($type)) {
+      $userQuery = "SELECT * FROM users WHERE id =".mysqli_real_escape_string($link, $type)." LIMIT 1";
+      $userQueryResult = mysqli_query($link, $userQuery);
+      $user = mysqli_fetch_assoc($userQueryResult);
+      echo "<h2>".mysqli_real_escape_string($link, $user['email'])."'s Tweets</h2>";
+
+      $whereClause = "WHERE userid = ".mysqli_real_escape_string($link, $type);
     }
 
     $query = "SELECT * FROM tweets ".$whereClause." ORDER BY `datetime` DESC LIMIT 10";
@@ -93,5 +100,14 @@
 
   function displayTweetBox() {
     echo '<div id="tweetSuccess" class="alert alert-success"><p>Your tweet was posted successfully.</p></div><div id="tweetFail" class="alert alert-danger"></div><div class="form"><textarea class="form-control" id="tweetContent"></textarea></div><button id="postTweetButton" class="btn btn-primary">Post Tweet</button>';
+  }
+
+  function displayUsers() {
+    global $link;
+    $query = "SELECT * FROM users LIMIT 10";
+    $result = mysqli_query($link, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+      echo "<p><a href='?page=publicprofiles&userid=".$row['id']."'>".$row['email']."</a></p>";
+    }
   }
 ?>
