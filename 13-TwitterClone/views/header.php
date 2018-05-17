@@ -32,13 +32,9 @@
         </ul>
       </div>
       <div class="form-inline pull-xs-right">
-        <?php if (isset($_SESSION['id'])) {
-          echo '<script type="text/javascript">alert("ok");</script>';
-        ?>
+        <?php if (isset($_SESSION['id'])) { ?>
           <a class="btn btn-outline-success" href="?function=logout">Logout</a>
-        <?php } else {
-          echo '<script type="text/javascript">alert("ng");</script>';
-          ?>
+        <?php } else { ?>
           <button class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">Login/Signup</button>
         <?php } ?>
       </div>

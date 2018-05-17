@@ -8,7 +8,7 @@
     exit();
   }
 
-  if(isset($_GET['fuction'])) {
+  if(isset($_GET['function'])) {
     if($_GET['function'] == "logout") {
       session_unset();
     }
@@ -52,6 +52,8 @@
         else $whereClause .= " OR";
         $whereClause .= " userid = ".$row['isFollowing'];
       }
+    } else if ($type === 'yourtweets') {
+      $whereClause = "WHERE userid = ".mysqli_real_escape_string($link, $_SESSION['id']);
     } else if ($type === 'search') {
       echo '<p>Showing search results for "'.mysqli_real_escape_string($link, $_GET['q']).'":</p>';
 
